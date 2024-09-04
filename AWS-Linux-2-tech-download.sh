@@ -1,27 +1,30 @@
 #! /bin/bash
 
 # Update & Upgrade the server
-
 sudo yum update -y
 sudo yum upgrade -y
 
-#Add nodejs from binary archive
-
+# Add nodejs from binary archive
 wget https://nodejs.org/dist/v20.11.0/node-v20.11.0-linux-x64.tar.gz
 
 # Unzip the directory and add it to the executable path
-
 sudo mkdir -p /usr/local/lib/nodejs
 tar -xvf node-v20.11.0-linux-x64.tar.gz 
 sudo mv node-v20.11.0-linux-x64 /usr/local/lib/nodejs/
 
-# Add the details to .bashprofile
-
+# Add the details to .bash_profile
 echo "VERSION=v20.11.0" >> ~/.bash_profile
 echo "DISTRO=linux-x64" >> ~/.bash_profile
 echo "export PATH=/usr/local/lib/nodejs/node-v20.11.0-linux-x64/bin:\$PATH" >> ~/.bash_profile
 
-. ~/.bash_profile
+# Immediately export variables within the script
+export VERSION=v20.11.0
+export DISTRO=linux-x64
+export PATH=/usr/local/lib/nodejs/node-v20.11.0-linux-x64/bin:$PATH
+
+# Confirm Node.js installation
+node -v
+npm -v
 
 echo "Nodejs environment variables added and profile refreshed."
 
