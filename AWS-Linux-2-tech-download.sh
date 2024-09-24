@@ -22,6 +22,8 @@ export VERSION=v20.11.0
 export DISTRO=linux-x64
 export PATH=/usr/local/lib/nodejs/node-v20.11.0-linux-x64/bin:$PATH
 
+source ~/.bash_profile
+
 # Confirm Node.js installation
 node -v
 npm -v
